@@ -42,7 +42,7 @@ public class OrderTask {
     public void processDeliveryOrder(){
         log.info("处理在派送的订单{}",LocalDateTime.now());
         LocalDateTime time=LocalDateTime.now().plusMinutes(-60);
-        List<Orders> orders= orderMapper.getByStatusAndOrderTimeOut(Orders.PENDING_PAYMENT,time);
+        List<Orders> orders= orderMapper.getByStatusAndOrderTimeOut(Orders.DELIVERY_IN_PROGRESS,time);
         if(orders.size()>0&&orders!=null){
             for (Orders order:orders){
                 order.setStatus(Orders.COMPLETED);
